@@ -124,6 +124,8 @@ class ROBERTAClass(torch.nn.Module, PyTorchModelHubMixin):
 
 
 model = ROBERTAClass.from_pretrained("omarahmedsaad/entrepreneur_detection")
+model.eval()
+torch.grad = False
 
 # ----------------- PREDICTION FUNCTION -----------------
 
