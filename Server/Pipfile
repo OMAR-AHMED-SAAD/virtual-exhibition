@@ -24,6 +24,13 @@ seaborn = "*"
 shap = "*"
 safetensors = "*"
 flask-cors = "*"
+diffusers = "*"
+sentencepiece = "*"
+accelerate = "*"
+mps = "*"
+sacremoses = "*"
+tensorflow = "*"
+tf-keras = "*"
 
 [dev-packages]
 

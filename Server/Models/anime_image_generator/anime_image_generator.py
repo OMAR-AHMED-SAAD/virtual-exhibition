@@ -1,14 +1,54 @@
-## imports
+# ## imports
+# import tensorflow as tf
+# from huggingface_hub import from_pretrained_keras
+# import io
+# import base64
+
+# model = from_pretrained_keras("AhmedKayed/anime-image-generator")
+# # def function to generate anime images
+# def generate(args):
+#      # creating a random nosie to feed it to the trained Generator model
+#     noise = tf.random.normal([32, 100])
+#     # Generatine new images using the trained Generator model 
+#     generated_images = model(noise, training=False)
+
+#     # converting the input image to the range [0, 255]
+#     generated_images = (generated_images+127.5)*127.5
+
 import tensorflow as tf
 from huggingface_hub import from_pretrained_keras
+import io
+import base64
+from PIL import Image
+import numpy as np
 
+# Load the pre-trained model
 model = from_pretrained_keras("AhmedKayed/anime-image-generator")
-# def function to generate anime images
-def generate_anime_images():
-     # creating a random nosie to feed it to the trained Generator model
-    noise = tf.random.normal([32, 100])
-    # Generatine new images using the trained Generator model 
-    generated_images = model(noise, training=False)
 
-    # converting the input image to the range [0, 255]
-    generated_images1 = (generated_images+127.5)*127.5
+# Define function to generate anime images and convert to base64 string
+def generate(args):
+    # Create random noise
+    noise = tf.random.normal([1, 100])  # Use batch size of 1 for a single image
+    
+    # Generate new images using the trained Generator model
+    generated_images = model(noise, training=False)
+    
+    # Convert the image from [-1, 1] to [0, 255]
+    generated_images = (generated_images+127.5)*127.5
+    
+    # Convert to NumPy array
+    image_array = generated_images.numpy()[0].astype(np.uint8)
+    
+    # Convert NumPy array to PIL Image
+    image = Image.fromarray(image_array)
+    
+    # Save image to a bytes buffer
+    buffer = io.BytesIO()
+    image.save(buffer, format="PNG")
+    
+    # Convert bytes to base64 string
+    image_base64 = base64.b64encode(buffer.getvalue()).decode("utf-8")
+    
+    return image_base64
+
+
