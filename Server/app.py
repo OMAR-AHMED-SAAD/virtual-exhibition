@@ -4,9 +4,11 @@ from controller import *
 import json
 
 app = Flask(__name__)
+app.config['DEBUG'] = True
 
-CORS(app, resources={r"/*": {"origins": "http://localhost:5173"}})  # Allow only specific origin
-
+# CORS(app, resources={r"/*": {"origins": "http://localhost:5173"}})  # Allow only specific origin
+# all all in CORS
+CORS(app)
 
 
 @app.route('/')
@@ -48,3 +50,18 @@ def plot_explanation_fn():
     #     "entrepreneur_detection", "I love to meet new people and make new friends.")
     # return json.dumps({'html': html_content})
     # return jsonify({'html': html_content})
+
+@app.route("/generate", methods=["POST"])
+def generate_fn():
+    data = request.get_json()
+    model_name = data.get("model_name")
+    text = data.get("text")
+
+    if not model_name:
+        return jsonify({"error": "Model name and text are required"}), 400
+    
+    if not text:
+        text = None
+
+    result = generate(model_name,text)
+    return jsonify({"text": text, "image": result})
