@@ -24,8 +24,6 @@ seaborn = "*"
 shap = "*"
 safetensors = "*"
 flask-cors = "*"
+pymongo = "*"
 
 [dev-packages]
-
-[requires]
-python_version = "3.11"
