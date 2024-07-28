@@ -1,0 +1,139 @@
+@import url('https://fonts.googleapis.com/css?family=Open+Sans|Rock+Salt|Shadows+Into+Light|Cedarville+Cursive');
+.landing-page {
+  background: url("../assets/images/background.png") no-repeat right;
+  height: 100vh;
+  display: flex;
+  align-items: center;
+}
+
+/* make background image smaller when on mobile */
+@media (max-width: 768px) {
+  .landing-page {
+    background-size: 80%;
+    background-position: 50% 20%;
+    justify-content: center;
+  }
+  .landing-page-primary-section {
+    padding-left: 0;
+  }
+}
+
+.landing-page-primary-section {
+  max-width: 30%;
+  min-width: 250px;
+  padding-left: 2%;
+  color: #ffffff;
+
+  & h1 {
+    font-family: "Helvetica Neue", sans-serif;
+    font-size: 3.75em;
+    line-height: 1.1;
+  }
+
+  & a{
+    text-decoration: none;
+  }
+
+  & p {
+    font-family: sans-serif;
+    font-size: 1.3em;
+    line-height: 1;
+    padding-bottom: 5%;
+  }
+}
+
+.join-button {
+  background-color: #fb5513;
+  border: 0 solid #e5e7eb;
+  box-sizing: border-box;
+  color: #ffffff;
+  display: flex;
+  font-family: ui-sans-serif, system-ui, -apple-system, system-ui, "Segoe UI",
+    Roboto, "Helvetica Neue", Arial, "Noto Sans", sans-serif,
+    "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
+  font-weight: 700;
+  justify-content: center;
+  position: relative;
+  text-align: center;
+  text-decoration: none #ffffff solid;
+  text-decoration-thickness: auto;
+  width: 100%;
+  max-width: 460px;
+  position: relative;
+  cursor: pointer;
+  transform: rotate(-2deg);
+  user-select: none;
+  -webkit-user-select: none;
+  touch-action: manipulation;
+  padding: 0.75rem 3rem;
+  font-size: 1.25rem;
+}
+
+.join-button:focus {
+  outline: 0;
+}
+
+.join-button:after {
+  content: "";
+  position: absolute;
+  border: 1px solid #5d5959;
+  bottom: 4px;
+  left: 4px;
+  width: calc(100% - 1px);
+  height: calc(100% - 1px);
+}
+
+.join-button:hover:after {
+  bottom: 2px;
+  left: 2px;
+}
+
+.exhibition-container {
+  background-color: #fff; /* White background for the container */
+  border-radius: 15px; /* Rounded corners */
+  padding: 40px; /* Padding inside the container */
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* Light shadow to create a popping effect */
+  margin: 200px auto 120px auto; /* Margin for spacing and centering */
+  max-width: 90%; /* Responsive width */
+  position: relative; /* Positioning context for the signature */
+  & hr {
+    margin: 20px 0; /* Margin for spacing */
+  }
+}
+
+.exhibition-title{
+  font-size: 2.5em; /* Font size for the title */
+  margin: 0 0 20px; /* Margin for spacing */
+  color: var(--orange); /* Dark text color for contrast */
+}
+
+
+.exhibition-details {
+  font-family: sans-serif;
+  font-size: 1.25rem; /* Font size for the paragraph */
+  line-height: 1.6; /* Line height for readability */
+  color: #333; /* Dark text color for contrast */
+  margin: 0; /* Remove default margin */
+}
+
+.signature {
+  position: absolute; /* Absolute positioning */
+  bottom: 10px; /* Position from the bottom */
+  right: 50px; /* Position from the right */
+  font-family : 'Cedarville Cursive', cursive; /* Cursive font for the signature */
+  font-size: 1.75em; /* Font size */
+  color: var(--orange); /* Bright color for the signature */
+  opacity: 0.9; /* Slight transparency */
+}
+
+@media (max-width: 768px) {
+
+  .exhibition-container {
+    padding: 30px; /* Adjust padding for smaller screens */
+    max-width: 80%; /* Adjust max-width for smaller screens */
+  }
+  .signature {
+    bottom: 0px; /* Adjust positioning for smaller screens */
+    right: 35px; /* Adjust positioning for smaller screens */
+  }
+}

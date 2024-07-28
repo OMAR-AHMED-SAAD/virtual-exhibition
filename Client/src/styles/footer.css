@@ -1,0 +1,65 @@
+.footer {
+    background-color: #f0f0f0; /* Light background color for a cheerful look */
+    color: #333; /* Dark text color for contrast */
+    padding: 10px 20px; /* Increased padding for a spacious feel */
+    text-align: center; /* Center-align the text */
+    border-bottom: 4px solid #ff6347; /* Bright top border for added flair */
+    border-top: 2px solid #ff6347; /* Bright top border for added flair */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Light shadow for a lifted effect */
+    position: relative;
+    bottom: 0;
+    width: 100%;
+    font-family: 'Arial', sans-serif; /* Cheerful, clean font */
+  }
+  
+  .footer-content {
+    display: flex;
+    justify-content: space-between; /* Distribute space between elements */
+    align-items: center;
+    max-width: 1200px; /* Adjust to your preference */
+    margin: 0 auto;
+    flex-wrap: wrap; /* Allow wrapping on smaller screens */
+  }
+  
+  .logo-section {
+    flex: 1; /* Flex-grow to allow space for the logo */
+    display: flex;
+    justify-content: center; /* Center-align logo horizontally */
+  }
+  
+  .logo {
+    max-height: 60px; /* Increase height for better visibility */
+  }
+  
+  .rights-section {
+    flex: 2; /* Flex-grow to take up more space */
+    color: #555; /* Slightly lighter text color */
+    font-size: 1rem; /* Adjust font size */
+  }
+  
+  .contact-section {
+    flex: 1; /* Flex-grow for contact section */
+    display: flex;
+    justify-content: center; /* Center-align contact information */
+  }
+  
+  .contact-section a {
+    color: #ff6347; /* Bright color for the email link */
+    text-decoration: none; /* Remove underline from link */
+    font-weight: bold; /* Bold font for emphasis */
+    transition: color 0.3s, text-decoration 0.3s; /* Smooth transition for hover effect */
+  }
+  
+  .contact-section a:hover {
+    color: #e55347; /* Slightly darker color on hover */
+    text-decoration: underline; /* Underline on hover for better UX */
+  }
+  
+  /* Additional styles for responsiveness */
+  @media (max-width: 768px) {
+    .footer-content {
+      flex-direction: column;
+      text-align: center; /* Center-align text on smaller screens */
+    }
+  }
+  

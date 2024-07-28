@@ -25,5 +25,12 @@ shap = "*"
 safetensors = "*"
 flask-cors = "*"
 pymongo = "*"
+diffusers = "*"
+sentencepiece = "*"
+accelerate = "*"
+mps = "*"
+sacremoses = "*"
+tensorflow = "*"
+tf-keras = "*"
 
 [dev-packages]

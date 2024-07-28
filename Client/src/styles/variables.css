@@ -1,0 +1,17 @@
+/* Blue Shades */
+:root {
+  --background-color:#171212;
+  --orange: #fb5513;
+  --complementary-red: #ff4d4f;
+  /* Contrasting color for accents and interactive elements */
+  --complementary-blue: #1890ff;
+  /* Cool contrast for links and other interactive elements */
+  --complementary-yellow: #ffd666;
+  /* Warm contrast for attention-grabbing elements */
+  --complementary-gray: #bfbfbf;
+  /* Neutral gray for backgrounds or subtle UI elements */
+  --medium-gray: #ddd;
+  /* Medium gray for sidebar  */
+  --low-medium-gray: #cbcbcb;
+  /* Low-Medium gray for sidebar  */
+}

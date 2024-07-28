@@ -1,7 +1,7 @@
 from flask import Flask, request, jsonify
 from flask_cors import CORS
 from pymongo import MongoClient
-from controller import predict, explain, add_student, list_students, get_student
+from controller import *
 from config import Config
 
 app = Flask(__name__)
@@ -39,6 +39,21 @@ def explain_fn():
 
     result = explain(model_name, text)
     return jsonify({"modelName": model_name, "text": text, "result": result})
+
+@app.route("/generate", methods=["POST"])
+def generate_fn():
+    data = request.get_json()
+    model_name = data.get("model_name")
+    text = data.get("text")
+
+    if not model_name:
+        return jsonify({"error": "Model name and text are required"}), 400
+    
+    if not text:
+        text = None
+
+    result = generate(model_name,text)
+    return jsonify({"text": text, "image": result})
 
 @app.route("/students", methods=["POST"])
 def add_student_fn():
