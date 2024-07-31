@@ -2,6 +2,8 @@
 @import 'landingPage.css';
 @import 'modelSwiper.css';
 @import 'footer.css';
+@import 'layout.css';
+@import 'models.css';
 
 * {
     box-sizing: border-box;
@@ -22,10 +24,8 @@ body {
     margin: 0;
     min-width: 100%;
     min-height: 100dvh;
-}
-
-body {
     background-color: var(--background-color);
+    color: #ffffff;
 }
 
 h1 {

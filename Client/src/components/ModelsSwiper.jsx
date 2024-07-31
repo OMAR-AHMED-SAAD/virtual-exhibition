@@ -19,7 +19,6 @@ const ModelSwiper = () => {
         console.log(error);
       });
   }, []);
-
   return (
     <div className="model-swiper">
       <h1 className="model-swiper-title">
@@ -27,7 +26,7 @@ const ModelSwiper = () => {
       </h1>
       <div className="model-swiper-container">
         {models?.map((model) => (
-          <ModelCard key={model.id} model={model} />
+          <ModelCard key={model?.id} model={model} />
         ))}
       </div>
       {loading && (
