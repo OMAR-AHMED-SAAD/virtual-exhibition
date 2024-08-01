@@ -46,4 +46,9 @@
 .model-cover-image{
   height: 200px;
   width:auto;
+  object-fit: cover;
+}
+
+.ant-card-body {
+  height: 200px; 
 }

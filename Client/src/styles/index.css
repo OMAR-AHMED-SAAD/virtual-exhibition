@@ -1,34 +1,43 @@
-@import 'variables.css';
-@import 'landingPage.css';
-@import 'modelSwiper.css';
-@import 'footer.css';
-@import 'layout.css';
-@import 'models.css';
+@import "variables.css";
+@import "landingPage.css";
+@import "modelSwiper.css";
+@import "footer.css";
+@import "layout.css";
+@import "models.css";
+@import "entrepreneurOutput.css";
 
 * {
-    box-sizing: border-box;
+  box-sizing: border-box;
 }
 
 :root {
-    font-family: Inter, system-ui, Avenir, Helvetica, Arial, sans-serif;
-    line-height: 1.5;
-    font-weight: 400;
-    font-synthesis: none;
-    text-rendering: optimizeLegibility;
-    -webkit-font-smoothing: antialiased;
-    -moz-osx-font-smoothing: grayscale;
-    -webkit-text-size-adjust: 100%;
+  font-family: Inter, system-ui, Avenir, Helvetica, Arial, sans-serif;
+  line-height: 1.5;
+  font-weight: 400;
+  font-synthesis: none;
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  -webkit-text-size-adjust: 100%;
 }
 
 body {
-    margin: 0;
-    min-width: 100%;
-    min-height: 100dvh;
-    background-color: var(--background-color);
-    color: #ffffff;
+  margin: 0;
+  min-width: 100%;
+  min-height: 100dvh;
+  background-color: var(--background-color);
+  color: #ffffff;
 }
 
 h1 {
-    font-size: 3.2em;
-    line-height: 1.1;
+  font-size: 3.2em;
+  line-height: 1.1;
+}
+
+.title-wrap {
+  word-wrap: break-word;
+  overflow-wrap: break-word;
+  word-break: break-word;
+  white-space: normal;
+  display: block;
 }

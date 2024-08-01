@@ -2,7 +2,7 @@ import { useEffect, useState } from "react";
 import axiosApi from "../../utils/axiosApi";
 import MyLayout from "../MyLayout";
 import { DownloadOutlined } from "@ant-design/icons";
-import { Button } from "antd";
+import { Button, message } from "antd";
 
 const AnimeImageGenerator = () => {
   const [model, setModel] = useState(null);
@@ -24,25 +24,19 @@ const AnimeImageGenerator = () => {
       });
   }, []);
 
-  const handleDownload = (base64String) => {
-    const link = document.createElement("a");
-    link.href = base64String;
-    link.download = "anime generated image.png";
-    document.body.appendChild(link);
-    link.click();
-    document.body.removeChild(link);
-  };
-
   const onGenerate = () => {
     setLoading(true);
     axiosApi
       .post("/generate", { model_name: "anime_image_generator" })
       .then((response) => {
         setGeneratedImages(response.data.image);
-        setLoading(false);
       })
       .catch((error) => {
         console.log(error);
+        message.error("Model is not Responding. Please try again later.");
+      })
+      .finally(() => {
+        setLoading(false);
       });
   };
 
@@ -53,18 +47,19 @@ const AnimeImageGenerator = () => {
         modelDescription={model?.description}
         student={student}
       >
-        <div className="anime-model-container">
+        <div className="model-container">
           <div className="model-swiper-container anime-model-swiper">
             {generatedImages?.map((image, index) => (
-              <div className="model-card" key={"anime-image" + index}>
+              <div className="anime-model-card" key={"anime-image" + index}>
                 <img className="anime-model-image" src={image} alt="model" />
-                <Button
-                  className="anime-model-download"
-                  type="primary"
-                  size="small"
-                  icon={<DownloadOutlined />}
-                  onClick={() => handleDownload(image)}
-                />
+                <a href={image} download="anime_generated_image.png">
+                  <Button
+                    className="anime-model-download"
+                    type="primary"
+                    size="small"
+                    icon={<DownloadOutlined />}
+                  />
+                </a>
               </div>
             ))}
           </div>

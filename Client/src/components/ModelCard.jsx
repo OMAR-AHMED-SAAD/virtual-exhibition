@@ -8,15 +8,16 @@ import AvatarImage from "../assets/images/avatar.png";
 
 const ModelCard = ({ model }) => {
   return (
-    <Card key={"card"+model?.id}
+    <Card
+      key={"card" + model?.id}
       style={{
         width: 300,
       }}
       cover={
         <img
-        className="model-cover-image"
+          className="model-cover-image"
           alt="model-image"
-          src={`${ClientBaseURL}/assets/images/anime.jpg`}
+          src={ClientBaseURL+model?.image}
         />
       }
       actions={[
@@ -37,7 +38,7 @@ const ModelCard = ({ model }) => {
       <Meta
         style={{ minHeight: "100px" }}
         avatar={<Avatar src={AvatarImage} />}
-        title={model?.name}
+        title={<span className="title-wrap">{model?.name}</span>}
         description={model?.shortDescription}
       />
     </Card>

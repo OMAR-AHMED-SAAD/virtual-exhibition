@@ -2,7 +2,6 @@ import { useState } from "react";
 import {
   FloatButton,
   Modal,
-  Layout,
   Descriptions,
   Typography,
   Tooltip,
@@ -15,7 +14,6 @@ import {
   FileTextOutlined,
   LinkedinFilled,
 } from "@ant-design/icons";
-import { Content } from "antd/es/layout/layout";
 import ParticlesBg from "particles-bg";
 
 const { Link, Paragraph } = Typography;
@@ -33,7 +31,7 @@ const MyLayout = (props) => {
 
   return (
     <>
-      <Layout className="layout">
+      <div>
         <ParticlesBg
           type="cobweb"
           color="#f0f0f0"
@@ -46,12 +44,12 @@ const MyLayout = (props) => {
             height: "100%",
           }}
         />
-        <Content className="layout-content">
+        <div className="layout-content">
           <header className="layout-header">
             <h1 className="layout-title">{modelName}</h1>
           </header>
           {props.children}
-        </Content>
+        </div>
         <Modal
           title={<div className="modal-title-centered">Author Details</div>}
           open={isAuthorModalOpen}
@@ -153,16 +151,18 @@ const MyLayout = (props) => {
             <FloatButton onClick={showAuthorModal} icon={<UserOutlined />} />
           </Tooltip>
         </FloatButton.Group>
-      </Layout>
+      </div>
     </>
   );
 };
-
 MyLayout.propTypes = {
-  children: PropTypes.node.isRequired,
-  student: PropTypes.object.isRequired,
-  modelName: PropTypes.string.isRequired,
-  modelDescription: PropTypes.string.isRequired,
+  children: PropTypes.node,
+  student: PropTypes.oneOfType([PropTypes.object, PropTypes.oneOf([null])]), // Can be an object or null
+  modelName: PropTypes.oneOfType([PropTypes.string, PropTypes.oneOf([null])]), // Can be a string or null
+  modelDescription: PropTypes.oneOfType([
+    PropTypes.string,
+    PropTypes.oneOf([null]),
+  ]), // Can be a string or null
 };
 
 export default MyLayout;

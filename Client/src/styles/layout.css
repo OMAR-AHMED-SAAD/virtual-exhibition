@@ -3,10 +3,10 @@
     src: url(edundot.ttf);
 }
 
-.layout {
+.layout-content {
   display: flex;
   flex-direction: column;
-  min-height: 100dvh;
+  height: 100dvh;
   position: relative;
 }
 
@@ -16,7 +16,7 @@
   justify-content: center;
   border-top: 1px solid #ff6347; /* Bright top border for added flair */
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Light shadow for a lifted effect */
-  height: 15%;
+  flex: 0 0 15%; /* Fixed height of 20% */
 }
 
 .layout-title {
@@ -25,14 +25,7 @@
   color: #ffffff;
   font-family: edundot;
   font-weight: 400;
-  
-}
-
-.layout-content {
-  min-height: 100%;
-  background-color: var(--background-color);
-  /* background-color: rgba(27, 27, 197, 0.713); */
-  color: #f0f0f0;
+  text-align: center;
 }
 
 /* StudentModal.css */
