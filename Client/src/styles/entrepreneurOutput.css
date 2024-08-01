@@ -1,0 +1,93 @@
+.ent-model-buttons-container {
+  margin-top: 20px;
+  width: 60%;
+  z-index: 2;
+}
+
+.ent-model-button-top {
+  display: grid;
+  grid-template-columns: repeat(6, 1fr); /* Two equal columns */
+  gap: 10px; /* Space between buttons */
+  margin-bottom: 20px; /* Space between top and grid */
+}
+
+.ent-model-button-grid {
+  display: grid;
+  grid-template-columns: repeat(8, 1fr); /* Four columns */
+  gap: 10px; /* Space between buttons */
+  margin-bottom: 20px;
+}
+
+.ent-model-button {
+  padding: 10px 20px;
+  background-color: #fb5513;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+  transition: background-color 0.3s ease, opacity 0.3s ease;
+  z-index: 2;
+}
+
+.ent-model-button:hover {
+  background-color: #e04a11;
+}
+
+.ent-model-button-large {
+  grid-column: span 3; /* Span across two columns */
+}
+
+.ent-model-button-medium {
+  grid-column: span 2; /* Default span */
+}
+
+/* buttons colors */
+.ent-model-button-entrepreneur {
+  background-color: #2857ff; /* Blue */
+  &:hover {
+    background-color: #1848f5; /* Darker Blue */
+  }
+}
+
+.ent-model-button-IE {
+  background-color: #b30eff;
+  /* hover */
+  &:hover {
+    background-color: #b30eff;
+  }
+}
+
+.ent-model-button-NS {
+  background-color: #43dc25;
+  &:hover {
+    background-color: #43dc25;
+  }
+}
+
+.ent-model-button-TF {
+  background-color: #ff0000;
+  &:hover {
+    background-color: #ff0000;
+  }
+}
+
+.ent-model-button-JP {
+  background-color: #f2e318;
+  &:hover {
+    background-color: #f2e318;
+  }
+}
+
+.ent-model-button:disabled {
+  background-color: #d3d3d3; /* Gray color */
+  color: #a9a9a9; /* Darker gray for text */
+  cursor: default;
+  box-shadow: none;
+}
+
+@media screen and (max-width: 768px) {
+  .ent-model-buttons-container {
+    width: 85%;
+  }
+}
