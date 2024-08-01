@@ -137,14 +137,26 @@ def decode_traits(probs):
     return result
 
 
+def addTraitAcronym(traits):
+    Acronym = traits[0][0]
+    if (traits[1] == 'Intuition'):
+        Acronym += 'N'
+    else:
+        Acronym += 'S'
+    Acronym += traits[2][0]+traits[3][0]
+    return Acronym
+
+
 def predict(text):
     if (clean_text_for_explain(text) == ''):
         return "Please provide a valid input."
     result = decode_traits(model.predict(text))
     if (result[0] == 'Introversion' and result[1] == 'Intuition' and result[2] == 'Thinking' and result[3] == 'Precieving'):
-        result.append('ENTREPRENEUR')
+        result.insert(0, 'INTP')
+        result.append('Entrepreneur')
     else:
-        result.append('NOT ENTREPRENEUR')
+        result.insert(0, addTraitAcronym(result))
+        result.append('Non-Entrepreneur')
     return result
 
 # ----------------- SHAP EXPLANATION FUNCTION -----------------
