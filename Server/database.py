@@ -3,7 +3,7 @@ from bson.objectid import ObjectId
 
 def validate_student_data(student_data):
     required_fields = {"name", "links", "model", "supervisors", "thesisLink"}
-    model_fields = {"name","short_description", "description", "path", "image"}
+    model_fields = {"name","shortDescription", "description", "path", "image"}
 
     # Check for missing required fields
     for field in required_fields:
@@ -43,8 +43,8 @@ def create_student(student_data, db):
         raise ValueError(error)
 
     student_data["model"]["_id"] = ObjectId()
-
     result = db.students.insert_one(student_data)
+    print(result)
     return str(result.inserted_id)
 
 
