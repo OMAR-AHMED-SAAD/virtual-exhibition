@@ -1,4 +1,4 @@
-@import url('https://fonts.googleapis.com/css?family=Open+Sans|Rock+Salt|Shadows+Into+Light|Cedarville+Cursive');
+@import url("https://fonts.googleapis.com/css?family=Open+Sans|Rock+Salt|Shadows+Into+Light|Cedarville+Cursive");
 .landing-page {
   background: url("../assets/images/background.png") no-repeat right;
   height: 100vh;
@@ -9,8 +9,8 @@
 /* make background image smaller when on mobile */
 @media (max-width: 768px) {
   .landing-page {
-    background-size: 80%;
-    background-position: 50% 20%;
+    background-size: 70%;
+    background-position: 100% 10%;
     justify-content: center;
   }
   .landing-page-primary-section {
@@ -28,9 +28,10 @@
     font-family: "Helvetica Neue", sans-serif;
     font-size: 3.75em;
     line-height: 1.1;
+    color: var(--orange);
   }
 
-  & a{
+  & a {
     text-decoration: none;
   }
 
@@ -93,7 +94,7 @@
   border-radius: 15px; /* Rounded corners */
   padding: 40px; /* Padding inside the container */
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* Light shadow to create a popping effect */
-  margin: 200px auto 120px auto; /* Margin for spacing and centering */
+  margin: 120px auto 120px auto; /* Margin for spacing and centering */
   max-width: 90%; /* Responsive width */
   position: relative; /* Positioning context for the signature */
   & hr {
@@ -101,12 +102,11 @@
   }
 }
 
-.exhibition-title{
+.exhibition-title {
   font-size: 2.5em; /* Font size for the title */
   margin: 0 0 20px; /* Margin for spacing */
   color: var(--orange); /* Dark text color for contrast */
 }
-
 
 .exhibition-details {
   font-family: sans-serif;
@@ -120,14 +120,13 @@
   position: absolute; /* Absolute positioning */
   bottom: 10px; /* Position from the bottom */
   right: 50px; /* Position from the right */
-  font-family : 'Cedarville Cursive', cursive; /* Cursive font for the signature */
+  font-family: "Cedarville Cursive", cursive; /* Cursive font for the signature */
   font-size: 1.75em; /* Font size */
   color: var(--orange); /* Bright color for the signature */
   opacity: 0.9; /* Slight transparency */
 }
 
 @media (max-width: 768px) {
-
   .exhibition-container {
     padding: 30px; /* Adjust padding for smaller screens */
     max-width: 80%; /* Adjust max-width for smaller screens */

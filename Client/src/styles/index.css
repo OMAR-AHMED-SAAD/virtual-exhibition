@@ -5,6 +5,7 @@
 @import "layout.css";
 @import "models.css";
 @import "entrepreneurOutput.css";
+@import "leaderboard.css";
 
 * {
   box-sizing: border-box;

@@ -2,8 +2,11 @@ import { FilePdfOutlined } from "@ant-design/icons";
 import ModelSwiper from "../components/ModelsSwiper";
 import Footer from "../components/Footer";
 import instructions from "../assets/instructions.pdf";
+import Leaderboard from "../components/Leaderboard";
+import { useState } from "react";
 
 const LandingPage = () => {
+  const [modelsUsage, setModelsUsage] = useState([]);
   return (
     <>
       <section className="landing-page">
@@ -28,7 +31,8 @@ const LandingPage = () => {
           </a>
         </div>
       </section>
-      <ModelSwiper />
+      <ModelSwiper setModelsUsage={setModelsUsage} />
+      <Leaderboard modelsUsage={modelsUsage} />
       <div className="exhibition-container">
         <h2 className="exhibition-title">About The Exhibition :</h2>
         <p className="exhibition-details">
@@ -44,8 +48,8 @@ const LandingPage = () => {
           the world. Explore the models we are currently hosting and discover
           the future of machine learning and our contribution to it.
         </p>
-          <hr/>
-          <span className="signature">52-MET</span>
+        <hr />
+        <span className="signature">52-MET</span>
       </div>
       <Footer />
     </>

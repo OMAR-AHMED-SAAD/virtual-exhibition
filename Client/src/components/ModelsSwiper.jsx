@@ -2,8 +2,9 @@ import ModelCard from "./ModelCard";
 import axiosApi from "../utils/axiosApi";
 import { useEffect, useState } from "react";
 import { Loading3QuartersOutlined } from "@ant-design/icons";
+import propTypes from "prop-types";
 
-const ModelSwiper = () => {
+const ModelSwiper = ({ setModelsUsage }) => {
   const [models, setModels] = useState([]);
   const [loading, setLoading] = useState(true);
 
@@ -13,12 +14,21 @@ const ModelSwiper = () => {
       .then((response) => {
         console.log(response);
         setModels(response.data);
+        setModelsUsage(
+          response.data
+            .map((model) => ({
+              name: model.name,
+              usage: model.usage,
+            }))
+            .filter((model) => model.usage > 0)
+            .sort((a, b) => b.usage - a.usage)
+        );
         setLoading(false);
       })
       .catch((error) => {
         console.log(error);
       });
-  }, []);
+  }, [setModelsUsage]);
   return (
     <div className="model-swiper">
       <h1 className="model-swiper-title">
@@ -39,6 +49,10 @@ const ModelSwiper = () => {
       )}
     </div>
   );
+};
+
+ModelSwiper.propTypes = {
+  setModelsUsage: propTypes.func.isRequired,
 };
 
 export default ModelSwiper;
