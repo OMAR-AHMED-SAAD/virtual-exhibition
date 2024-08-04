@@ -1,9 +1,10 @@
 # database/schemas.py
 from bson.objectid import ObjectId
 
+
 def validate_student_data(student_data):
     required_fields = {"name", "links", "model", "supervisors", "thesisLink"}
-    model_fields = {"name","shortDescription", "description", "path", "image"}
+    model_fields = {"name", "shortDescription", "description", "path", "image","usage"}
 
     # Check for missing required fields
     for field in required_fields:
@@ -63,3 +64,14 @@ def get_student_by_id(student_id, db):
         student["_id"] = str(student["_id"])
         student["model"]["_id"] = str(student["model"]["_id"])
     return student
+
+
+def update_student_model_usage_by_id(student_id, new_usage, db):
+    if not isinstance(new_usage, int):
+        raise ValueError("Usage must be an integer")
+
+    result = db.students.update_one(
+        {"_id": ObjectId(student_id)},
+        {"$set": {"model.usage": new_usage}}
+    )
+    return result.modified_count > 0

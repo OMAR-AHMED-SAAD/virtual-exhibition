@@ -7,7 +7,7 @@ import certifi
 
 app = Flask(__name__)
 app.config.from_object(Config)
-CORS(app, resources={r"/*": {"origins": "http://localhost:5173"}})
+CORS(app, resources={r"/*": {"origins": "http://localhost:5173/*"}})
 
 client = MongoClient(app.config["MONGO_URI"], tlsCAFile=certifi.where())
 try:
@@ -34,6 +34,7 @@ def predict_fn():
         return jsonify({"error": "Model name and text are required"}), 400
 
     result = predict(model_name, text)
+    update_model_usage(model_name)
     return jsonify({"modelName": model_name, "text": text, "result": result})
 
 
@@ -63,6 +64,7 @@ def generate_fn():
         text = None
 
     result = generate(model_name, text)
+    update_model_usage(model_name)
     return jsonify({"text": text, "image": result})
 
 
@@ -108,6 +110,15 @@ def get_model_fn(model_path):
     for student in students:
         if student["model"]["path"] == model_path:
             return jsonify({"model": student.pop('model'), 'student': student}), 200
+
+
+def update_model_usage(model_path):
+    students = list_students(db)
+    for student in students:
+        if student["model"]["path"] == model_path:
+            student["model"]["usage"] += 1
+            update_student_model_usage(student["_id"], student["model"]["usage"], db)
+            return
 
 
 if __name__ == "__main__":
