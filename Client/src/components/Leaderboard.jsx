@@ -2,6 +2,7 @@ import { Table, Tooltip } from "antd";
 import { CrownOutlined, QuestionCircleOutlined } from "@ant-design/icons";
 import propTypes from "prop-types";
 import formatNumber from "../utils/numericFormat";
+import { Link } from "react-router-dom";
 
 const Leaderboard = ({ modelsUsage }) => {
   const columns = [
@@ -34,12 +35,17 @@ const Leaderboard = ({ modelsUsage }) => {
       title: "Model Name",
       dataIndex: "name",
       key: "name",
+      render: (text, record) => (
+        <Link
+        style={{ fontSize: "1.15em" }} // Decrease the font size if needed
+        to={`/models/${record?.path}`}>{text}</Link>
+      ),
     },
     {
       title: "Usage Count",
       dataIndex: "usage",
       key: "usage",
-        render: (text) => formatNumber(text),
+      render: (text) => formatNumber(text),
     },
   ];
 

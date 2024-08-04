@@ -19,6 +19,7 @@ const ModelSwiper = ({ setModelsUsage }) => {
             .map((model) => ({
               name: model.name,
               usage: model.usage,
+              path: model.path,
             }))
             .filter((model) => model.usage > 0)
             .sort((a, b) => b.usage - a.usage)
