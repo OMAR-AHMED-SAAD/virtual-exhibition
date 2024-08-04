@@ -28,6 +28,7 @@
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
   transition: background-color 0.3s ease, opacity 0.3s ease;
   z-index: 2;
+  font-size: 1.1rem;
 }
 
 .ent-model-button:hover {
@@ -81,7 +82,7 @@
 
 .ent-model-button:disabled {
   background-color: #d3d3d3; /* Gray color */
-  color: #a9a9a9; /* Darker gray for text */
+  color: #7c7c7c; /* Darker gray for text */
   cursor: default;
   box-shadow: none;
 }
