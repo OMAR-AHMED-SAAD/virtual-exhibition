@@ -62,7 +62,7 @@ const ArabicTextToImage = () => {
             className="ent-model-input arabic-text-area"
             value={text}
             onChange={(e) => setText(e.target.value)}
-            placeholder="ادخل وصف الصوة هنا"
+            placeholder="ادخل وصف الصورة هنا..."
           />
 
           <Button
