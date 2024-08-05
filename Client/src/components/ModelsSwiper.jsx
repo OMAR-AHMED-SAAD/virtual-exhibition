@@ -3,6 +3,7 @@ import axiosApi from "../utils/axiosApi";
 import { useEffect, useState } from "react";
 import { Loading3QuartersOutlined } from "@ant-design/icons";
 import propTypes from "prop-types";
+import { message } from "antd";
 
 const ModelSwiper = ({ setModelsUsage }) => {
   const [models, setModels] = useState([]);
@@ -28,6 +29,7 @@ const ModelSwiper = ({ setModelsUsage }) => {
       })
       .catch((error) => {
         console.log(error);
+        message.error("Server Error. Please try again later.");
       });
   }, [setModelsUsage]);
   return (

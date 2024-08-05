@@ -18,10 +18,13 @@ const EntrepreneurDetection = () => {
         console.log(response);
         setModel(response.data.model);
         setStudent(response.data.student);
-        setLoading(false);
       })
       .catch((error) => {
         console.log(error);
+        message.error("Server Error. Please try again later.");
+      })
+      .finally(() => {
+        setLoading(false);
       });
   }, []);
 
@@ -37,7 +40,6 @@ const EntrepreneurDetection = () => {
     axiosApi
       .post("/predict", { modelName: "entrepreneur_detection", text: text })
       .then((response) => {
-        console.log(response.data);
         setOutput(response.data.result);
       })
       .catch((error) => {
@@ -77,7 +79,7 @@ const EntrepreneurDetection = () => {
               style={{
                 backgroundColor: "var(--orange)",
                 borderColor: "var(--orange)",
-                width:"100%"
+                width: "100%",
               }}
               onClick={handleDetect}
             >

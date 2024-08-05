@@ -17,10 +17,13 @@ const AnimeImageGenerator = () => {
         console.log(response);
         setModel(response.data.model);
         setStudent(response.data.student);
-        setLoading(false);
       })
       .catch((error) => {
         console.log(error);
+        message.error("Server Error. Please try again later.");
+      })
+      .finally(() => {
+        setLoading(false);
       });
   }, []);
 
