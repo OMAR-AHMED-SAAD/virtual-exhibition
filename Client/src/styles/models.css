@@ -76,3 +76,68 @@
     width: 85%;
   }
 }
+
+/* arabic text generator model */
+
+.arabic-text-area {
+  height: 100px;
+  direction: rtl;
+  text-align: right;
+  font-family: "Amiri", serif;
+  font-size: 20px;
+  z-index: 2;
+}
+
+.arabic-ouput-area {
+  margin-top: 20px;
+  width: 60%;
+  z-index: 2;
+  display: flex;
+  flex-direction: column;
+  margin-bottom: 80px;
+}
+
+.arabic-img-placeholder {
+  align-self: center;
+  width: 400px;
+  height: 400px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-radius: 15px;
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+  background: url("../assets/images/arabic.jpg") no-repeat;
+  background-size: cover;
+  position: relative;
+}
+
+.arabic-img {
+  width: 356px;
+  height: auto;
+  border-radius: 5px;
+}
+
+.arabic-download {
+  position: absolute;
+  top: 5%;
+  right: 5%;
+  background-color: #000;
+  color: #fff;
+  padding: 0.5rem;
+  border-radius: 0 0 0 0.5rem;
+  z-index: 2;
+}
+
+@media screen and (max-width: 768px) {
+  .arabic-ouput-area  {
+    width: 85%;
+  }
+  .arabic-img-placeholder {
+    width: 100%;
+    height: 300px;
+  }
+  .arabic-img {
+    width: 90%;
+    height: auto;
+  }
+}
