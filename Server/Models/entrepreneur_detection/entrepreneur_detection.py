@@ -32,7 +32,7 @@ device = torch.device("cuda" if torch.cuda.is_available() else "cpu")
 # ----------------- MODEL CLASS -----------------
 
 class ROBERTAClass(torch.nn.Module, PyTorchModelHubMixin):
-    def __init__(self, PRE_TRAINED_MODEL_NAME, num_classes=4, dropout=0.3):
+    def __init__(self, PRE_TRAINED_MODEL_NAME="roberta-base", num_classes=4, dropout=0.3):
         super(ROBERTAClass, self).__init__()
         self.bert_model = AutoModel.from_pretrained(
             PRE_TRAINED_MODEL_NAME, return_dict=True, output_attentions=True)
