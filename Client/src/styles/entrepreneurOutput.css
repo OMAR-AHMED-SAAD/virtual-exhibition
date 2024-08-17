@@ -92,4 +92,7 @@
   .ent-model-buttons-container {
     width: 85%;
   }
+  .ent-model-button-medium{
+    font-size: 0.5em;
+  }
 }
