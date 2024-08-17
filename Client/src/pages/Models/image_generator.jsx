@@ -3,8 +3,9 @@ import axiosApi from "../../utils/axiosApi";
 import MyLayout from "../MyLayout";
 import { DownloadOutlined } from "@ant-design/icons";
 import { Button, message } from "antd";
+import PropTypes from "prop-types";
 
-const AnimeImageGenerator = () => {
+const ImageGenerator = ({modelPath}) => {
   const [model, setModel] = useState(null);
   const [student, setStudent] = useState(null);
   const [loading, setLoading] = useState(true);
@@ -12,7 +13,7 @@ const AnimeImageGenerator = () => {
 
   useEffect(() => {
     axiosApi
-      .get("/get_model/anime_image_generator")
+      .get(`/get_model/${modelPath}`)
       .then((response) => {
         console.log(response);
         setModel(response.data.model);
@@ -25,12 +26,12 @@ const AnimeImageGenerator = () => {
       .finally(() => {
         setLoading(false);
       });
-  }, []);
+  }, [modelPath]);
 
   const onGenerate = () => {
     setLoading(true);
     axiosApi
-      .post("/generate", { model_name: "anime_image_generator" })
+      .post("/generate", { model_name: modelPath })
       .then((response) => {
         setGeneratedImages(response.data.image);
       })
@@ -85,4 +86,8 @@ const AnimeImageGenerator = () => {
   );
 };
 
-export default AnimeImageGenerator;
+ImageGenerator.propTypes = {
+  modelPath: PropTypes.string,
+};
+
+export default ImageGenerator;
