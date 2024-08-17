@@ -117,7 +117,8 @@ def update_model_usage(model_path):
     for student in students:
         if student["model"]["path"] == model_path:
             student["model"]["usage"] += 1
-            update_student_model_usage(student["_id"], student["model"]["usage"], db)
+            update_student_model_usage(
+                student["_id"], student["model"]["usage"], db)
             return
 
 
