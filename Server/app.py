@@ -7,7 +7,7 @@ import certifi
 
 app = Flask(__name__)
 app.config.from_object(Config)
-CORS(app, resources={r"/*": {"origins": "http://localhost:5173/*"}})
+CORS(app, resources={r"/*": {"origins": ["http://localhost:5173/*", "http://127.0.0.1:5173/*", "https://guchub.me/*"]}})
 
 client = MongoClient(app.config["MONGO_URI"], tlsCAFile=certifi.where())
 try:
