@@ -1,7 +1,11 @@
-import axios from 'axios'
+import axios from 'axios';
 
 const axiosApi = axios.create({
-    baseURL: 'http://127.0.0.1:5000',
-})
-export const ClientBaseURL = 'http://localhost:5173/'
-export default axiosApi
+    baseURL: import.meta.env.VITE_API_URL, 
+    headers: {
+        'Content-Type': 'application/json', 
+    },
+});
+
+export const ClientBaseURL = 'http://localhost:5173/'; // Define the client base URL separately.
+export default axiosApi;
