@@ -3,7 +3,7 @@
     color: #333; /* Dark text color for contrast */
     padding: 10px 20px; /* Increased padding for a spacious feel */
     text-align: center; /* Center-align the text */
-    border-bottom: 4px solid #ff6347; /* Bright top border for added flair */
+    border-bottom: 2px solid #ff6347; /* Bright top border for added flair */
     border-top: 2px solid #ff6347; /* Bright top border for added flair */
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Light shadow for a lifted effect */
     position: relative;
@@ -35,12 +35,19 @@
     flex: 2; /* Flex-grow to take up more space */
     color: #555; /* Slightly lighter text color */
     font-size: 1rem; /* Adjust font size */
+
+    & p {
+      margin: 0; /* Remove default margin */
+    }
   }
   
   .contact-section {
     flex: 1; /* Flex-grow for contact section */
     display: flex;
     justify-content: center; /* Center-align contact information */
+    & p {
+      margin: 0; /* Remove default margin */
+    }
   }
   
   .contact-section a {
@@ -60,6 +67,9 @@
     .footer-content {
       flex-direction: column;
       text-align: center; /* Center-align text on smaller screens */
+    }
+    .logo{
+      max-height: 50px; /* Decrease height for better visibility */
     }
   }
   
