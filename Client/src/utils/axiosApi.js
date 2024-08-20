@@ -7,5 +7,5 @@ const axiosApi = axios.create({
     },
 });
 
-export const ClientBaseURL = 'http://localhost:5173/'; // Define the client base URL separately.
+export const ClientBaseURL = import.meta.env.VITE_CLIENT_URL; // Define the client base URL separately.
 export default axiosApi;
