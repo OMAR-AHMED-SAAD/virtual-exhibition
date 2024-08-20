@@ -4,6 +4,7 @@ from pymongo import MongoClient
 from controller import *
 from config import Config
 import certifi
+import logging
 
 app = Flask(__name__)
 app.config.from_object(Config)
@@ -16,6 +17,8 @@ try:
 except Exception as e:
     print(e)
 db = client.virtual_exhibition
+
+logging.basicConfig(filename='app.log', level=logging.INFO)
 
 
 @app.route('/')
