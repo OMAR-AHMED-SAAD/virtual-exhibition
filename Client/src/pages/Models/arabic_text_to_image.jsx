@@ -70,7 +70,8 @@ const ArabicTextToImage = () => {
             type="primary"
             loading={loading}
             size="large"
-            onClick={onGenerate}
+            // onClick={onGenerate}
+            onClick={()=>message.error("Sorry this model is not yet available!")}
             style={{
               backgroundColor: "var(--orange)",
               borderColor: "var(--orange)",
