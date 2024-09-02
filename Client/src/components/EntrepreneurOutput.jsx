@@ -1,7 +1,8 @@
 import { Tooltip } from "antd";
 import PropTypes from "prop-types";
+import Explanation from "./Explanation";
 
-const EntrepreneurOutput = ({ output }) => {
+const EntrepreneurOutput = ({ output, explanations }) => {
   const EntrepreneurVsNon = {
     Entrepreneur: {
       className:
@@ -52,10 +53,9 @@ const EntrepreneurOutput = ({ output }) => {
     },
   };
 
-
   return (
     <div className="ent-model-buttons-container">
-      <h1 className="layout-title ent-model-title">Output : {output[5]}</h1>
+      <h1 className="layout-title ent-model-title">Outputs : {output[5]}</h1>
       <div className="ent-model-button-top">
         {Object.entries(EntrepreneurVsNon).map(([key, value]) => (
           <Tooltip
@@ -86,12 +86,20 @@ const EntrepreneurOutput = ({ output }) => {
           </button>
         ))}
       </div>
+      <h1
+        className="layout-title ent-model-title"
+        style={{ fontSize: "1.5rem" }}
+      >
+        Explanations : {!explanations ? "Try explaining the model output" : ""}
+      </h1>
+      {explanations && <Explanation explanations={explanations} />}
     </div>
   );
 };
 
 EntrepreneurOutput.propTypes = {
   output: PropTypes.array.isRequired,
+  explanations: PropTypes.object.isRequired,
 };
 
 export default EntrepreneurOutput;

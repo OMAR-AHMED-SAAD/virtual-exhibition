@@ -4,12 +4,24 @@ import MyLayout from "../MyLayout";
 import { Button, message } from "antd";
 import EntrepreneurOutput from "../../components/EntrepreneurOutput.jsx";
 
+const checkValidText = (text) => {
+  if (text === "") {
+    message.error("Please enter some text to detect.");
+    return;
+  } else if (text.length < 100) {
+    message.error("Please enter atleast 100 characters to detect.");
+    return;
+  }
+};
+
 const EntrepreneurDetection = () => {
   const [model, setModel] = useState(null);
   const [student, setStudent] = useState(null);
-  const [loading, setLoading] = useState(true);
+  const [loadingDetect, setLoadingDetect] = useState(true);
+  const [loadingExplain, setLoadingExplain] = useState(true);
   const [text, setText] = useState("");
   const [output, setOutput] = useState([]);
+  const [explanations, setExplanations] = useState(null);
 
   useEffect(() => {
     axiosApi
@@ -24,19 +36,14 @@ const EntrepreneurDetection = () => {
         message.error("Server Error. Please try again later.");
       })
       .finally(() => {
-        setLoading(false);
+        setLoadingDetect(false);
+        setLoadingExplain(false);
       });
   }, []);
 
   const handleDetect = () => {
-    if (text === "") {
-      message.error("Please enter some text to detect.");
-      return;
-    } else if (text.length < 100) {
-      message.error("Please enter atleast 100 characters to detect.");
-      return;
-    }
-    setLoading(true);
+    checkValidText(text);
+    setLoadingDetect(true);
     axiosApi
       .post("/predict", { modelName: "entrepreneur_detection", text: text })
       .then((response) => {
@@ -47,7 +54,25 @@ const EntrepreneurDetection = () => {
         message.error("Model is not Responding. Please try again later.");
       })
       .finally(() => {
-        setLoading(false);
+        setLoadingDetect(false);
+      });
+  };
+
+  const handleExplain = () => {
+    checkValidText(text);
+    setLoadingExplain(true);
+    axiosApi
+      .post("/explain", { modelName: "entrepreneur_detection", text: text })
+      .then((response) => {
+        setOutput(response.data.prediction);
+        setExplanations(response.data.explanation);
+      })
+      .catch((error) => {
+        console.log(error);
+        message.error("Model is not Responding. Please try again later.");
+      })
+      .finally(() => {
+        setLoadingExplain(false);
       });
   };
 
@@ -71,22 +96,40 @@ const EntrepreneurDetection = () => {
               value={text}
               onChange={handleTextChange}
             ></textarea>
-            <Button
-              className="anime-model-gen-btn ent-model-btn"
-              type="primary"
-              loading={loading}
-              size="large"
-              style={{
-                backgroundColor: "var(--orange)",
-                borderColor: "var(--orange)",
-                width: "100%",
-              }}
-              onClick={handleDetect}
-            >
-              Detect
-            </Button>
+            <div className="ent-model-btns">
+              <Button
+                className="anime-model-gen-btn ent-model-btn"
+                type="primary"
+                loading={loadingDetect}
+                disabled={loadingExplain}
+                size="large"
+                style={{
+                  backgroundColor: "var(--orange)",
+                  borderColor: "var(--orange)",
+                  margin: 0,
+                }}
+                onClick={handleDetect}
+              >
+                Detect
+              </Button>
+              <Button
+                className="anime-model-gen-btn ent-model-btn"
+                type="primary"
+                disabled={loadingDetect}
+                loading={loadingExplain}
+                size="large"
+                style={{
+                  backgroundColor: "var(--orange)",
+                  borderColor: "var(--orange)",
+                  margin: 0,
+                }}
+                onClick={handleExplain}
+              >
+                Detect & Explain
+              </Button>
+            </div>
           </div>
-          <EntrepreneurOutput output={output} />
+          <EntrepreneurOutput output={output} explanations={explanations} />
         </div>
       </MyLayout>
     </>

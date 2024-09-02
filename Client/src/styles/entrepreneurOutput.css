@@ -88,6 +88,10 @@
   box-shadow: none;
 }
 
+.ent-model-expl{
+
+}
+
 @media screen and (max-width: 768px) {
   .ent-model-buttons-container {
     width: 85%;

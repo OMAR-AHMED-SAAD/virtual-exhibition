@@ -43,6 +43,7 @@ const MyLayout = (props) => {
             width: "100%",
             height: "100%",
           }}
+          num = {20}
         />
         <div className="layout-content">
           <header className="layout-header">
