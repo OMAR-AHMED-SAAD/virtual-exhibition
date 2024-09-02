@@ -1,4 +1,4 @@
-# virtual-exhibition
+# Virtual-Exhibition
 
 ## Description
 - This project is a platform that we we can use to view the models students at the GUC build mainly in AI and ML.
