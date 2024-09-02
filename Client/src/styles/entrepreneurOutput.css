@@ -29,7 +29,7 @@
   transition: background-color 0.3s ease, opacity 0.3s ease;
   z-index: 2;
   font-size: 0.75em;
-
+  font-weight: bold;
 }
 
 .ent-model-button:hover {
@@ -89,7 +89,13 @@
 }
 
 .ent-model-expl{
+  margin-top: 20px;
+  margin-bottom: 40px;
+  font-size: 1.1em;
 
+  & div{
+    margin-bottom: 20px;
+  }
 }
 
 @media screen and (max-width: 768px) {
