@@ -1,4 +1,4 @@
-from flask import Flask, request, jsonify
+from flask import Flask, request, jsonify, send_file
 from flask_cors import CORS
 from pymongo import MongoClient
 from controller import *
@@ -8,7 +8,8 @@ import logging
 
 app = Flask(__name__)
 app.config.from_object(Config)
-CORS(app, resources={r"/*": {"origins": ["http://localhost:5173/*", "http://127.0.0.1:5173/*", "https://guchub.me/*"]}})
+CORS(app, resources={
+     r"/*": {"origins": ["http://localhost:5173/*", "http://127.0.0.1:5173/*", "https://guchub.me/*"]}})
 
 client = MongoClient(app.config["MONGO_URI"], tlsCAFile=certifi.where())
 try:
@@ -50,9 +51,10 @@ def explain_fn():
     if not model_name or not text:
         return jsonify({"error": "Model name and text are required"}), 400
 
-    result = explain(model_name, text)
-    return jsonify({"modelName": model_name, "text": text, "result": result})
-
+    explanation = plot_explanation(model_name, text)
+    prediction= predict(model_name, text)
+    update_model_usage(model_name)
+    return jsonify({"explanation": explanation, "prediction": prediction})
 
 @app.route("/generate", methods=["POST"])
 def generate_fn():

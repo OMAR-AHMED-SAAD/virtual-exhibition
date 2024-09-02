@@ -1,8 +1,5 @@
 import re
-from nltk.corpus import stopwords
-from nltk import word_tokenize
-import nltk
-import ssl
+from gensim.parsing.preprocessing import remove_stopwords 
 import numpy as np
 import torch
 from transformers import AutoTokenizer, AutoModel
@@ -151,7 +148,7 @@ def predict(text):
     if (clean_text_for_explain(text) == ''):
         return "Please provide a valid input."
     result = decode_traits(model.predict(text))
-    if (result[0] == 'Introversion' and result[1] == 'Intuition' and result[2] == 'Thinking' and result[3] == 'Precieving'):
+    if (result[0] == 'Introversion' and result[1] == 'Intuition' and result[2] == 'Thinking' and result[3] == 'Perceiving'):
         result.insert(0, 'INTP')
         result.append('Entrepreneur')
     else:
@@ -191,29 +188,23 @@ def explain(input, aspect):
     return shap_values_json
 
 
-def plot_explanation(input, aspect):
+def plot_explanation(input):
     if (clean_text_for_explain(input) == ''):
         return """ <p> 
                         Please provide a valid input.
                  </p>   """
-    shap_values = model.explain([input], aspect)
-    return shap.plots.text(shap_values, display=False)
-
+    shap_values_IE = model.explain([input], "IE")
+    shap_values_NS = model.explain([input], "NS")
+    shap_values_TF = model.explain([input], "TF")
+    shap_values_JP = model.explain([input], "JP")
+    return { "IE": shap.plots.text(shap_values_IE[0] , display=False),
+                "NS": shap.plots.text(shap_values_NS[0] , display=False),
+                "TF": shap.plots.text(shap_values_TF[0] , display=False),
+                "JP": shap.plots.text(shap_values_JP[0] , display=False) }
 
 # ----------------- PREPROCESSING FUNCTION -----------------
 
 # Text Cleaning Functions
-# Disable SSL verification
-ssl._create_default_https_context = ssl._create_unverified_context
-nltk.download('stopwords')
-nltk.download('punkt')
-stop_words = set(stopwords.words('english'))
-
-
-def mystopwords(text):
-    return ' '.join([w for w in word_tokenize(text) if not w in stop_words])
-
-
 def clean_text(string):
     clean = re.sub(r"(?:\@|http?\://|https?\://|www)\S+|\#\w+",
                    "", string)  # remove mentions & hashtags
@@ -224,7 +215,7 @@ def clean_text(string):
     # remove non alphabetic characters
     clean = re.sub('[^a-zA-Z]', ' ', clean.lower())
     clean = re.sub(r'[,]', ' ', clean)
-    clean = mystopwords(clean)  # remove stopwords
+    clean = remove_stopwords(clean)  # remove stopwords
     clean = re.sub(r'\s+', ' ', clean)  # removve extra spaces
     return clean
 

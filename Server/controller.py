@@ -17,7 +17,9 @@ def explain(model_name, text):
 
 
 def plot_explanation(model_name, text):
-    pass
+    module = SourceFileLoader(
+        model_name, f"Models/{model_name}/{model_name}.py").load_module()
+    return module.plot_explanation(text)
 
 
 def generate(model_name, text):
