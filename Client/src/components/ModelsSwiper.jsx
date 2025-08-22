@@ -13,7 +13,6 @@ const ModelSwiper = ({ setModelsUsage }) => {
     axiosApi
       .get("/get_models")
       .then((response) => {
-        console.log(response);
         setModels(response.data);
         setModelsUsage(
           response.data
