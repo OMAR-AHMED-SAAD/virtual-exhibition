@@ -3,7 +3,7 @@
 ## Description
 - This project is a platform that we we can use to view the models students at the GUC build mainly in AI and ML.
 - The project is built using React.js , Flask and MongoDB.
-- It's Currently hosted on AWS and can be accessed through this link: [Virtual Exhibition](https://guchub.me/)
+- It's Currently hosted on AWS and can be accessed through this link: [https://guchub.art](https://guchub.art/)
 - The project is still under development and we are working on adding more models and improving the UI.
 
 
